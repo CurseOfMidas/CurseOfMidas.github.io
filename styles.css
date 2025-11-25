@@ -5,32 +5,33 @@
 }
 
 :root {
-    --primary: #00d4ff;
-    --primary-dark: #0099cc;
-    --secondary: #ff006e;
-    --accent: #8338ec;
+    /* Black & Gold theme for Midas */
     --gold: #ffd700;
-    --gold-dark: #daa520;
-    --dark-bg: #0a0e27;
-    --darker-bg: #050812;
-    --card-bg: #1a1f3a;
-    --text-primary: #ffffff;
-    --text-secondary: #a0aec0;
-    --border-color: #2d3561;
+    --gold-dark: #c79a00;
+    --primary: var(--gold);
+    --primary-dark: var(--gold-dark);
+    --secondary: #b8860b;
+    --accent: #ffdf6b;
+    --dark-bg: #050409; /* near black */
+    --darker-bg: #000000;
+    --card-bg: #0f0d12; /* deep card background */
+    --text-primary: #f7f3e8; /* warm off-white */
+    --text-secondary: #c8b794; /* muted gold-ish */
+    --border-color: rgba(255,215,0,0.08);
     --success: #10b981;
-    --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition: all 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 @media (prefers-color-scheme: light) {
     :root {
-        --dark-bg: #f5f7fa;
+        --dark-bg: #f8f7f2;
         --darker-bg: #ffffff;
         --card-bg: #ffffff;
         --text-primary: #1a202c;
-        --text-secondary: #4a5568;
-        --border-color: #cbd5e0;
-        --primary: #0099cc;
-        --secondary: #d63384;
+        --text-secondary: #6b5f3a;
+        --border-color: rgba(0,0,0,0.06);
+        --primary: #9b7a00; /* softer gold for light */
+        --secondary: #7f6400;
     }
 }
 
@@ -107,13 +108,13 @@ body {
 
 .btn-primary {
     background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-    color: var(--dark-bg);
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    color: var(--darker-bg);
+    box-shadow: 0 6px 30px rgba(255, 215, 0, 0.12);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.5);
+    box-shadow: 0 14px 40px rgba(255, 215, 0, 0.18);
 }
 
 .btn-secondary {
@@ -123,7 +124,7 @@ body {
 }
 
 .btn-secondary:hover {
-    background: rgba(0, 212, 255, 0.1);
+    background: rgba(255, 215, 0, 0.06);
 }
 
 .btn-large {
@@ -212,9 +213,9 @@ body {
 }
 
 .theme-toggle {
-    background: rgba(0, 212, 255, 0.1);
-    border: 2px solid var(--primary);
-    color: var(--primary);
+    background: rgba(255, 215, 0, 0.05);
+    border: 2px solid rgba(255,215,0,0.18);
+    color: var(--gold);
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -228,8 +229,8 @@ body {
 }
 
 .theme-toggle:hover {
-    background: rgba(0, 212, 255, 0.2);
-    transform: rotate(180deg);
+    background: rgba(255, 215, 0, 0.08);
+    transform: rotate(90deg);
 }
 
 .hamburger {
@@ -261,7 +262,7 @@ body {
     right: -20%;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.06) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
 }
@@ -301,14 +302,15 @@ body {
 
 .floating-card {
     position: absolute;
-    background: rgba(26, 31, 58, 0.8);
-    border: 1px solid var(--border-color);
+    background: rgba(15, 13, 18, 0.9);
+    border: 1px solid rgba(255,215,0,0.06);
     border-radius: 12px;
     padding: 20px 30px;
     backdrop-filter: blur(10px);
     animation: float 3s ease-in-out infinite;
     animation-delay: var(--delay, 0s);
     text-align: center;
+    max-width: 240px;
 }
 
 @keyframes float {
@@ -388,7 +390,7 @@ body {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(0, 212, 255, 0.1), transparent);
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.06), transparent);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -396,7 +398,7 @@ body {
 .feature-card:hover {
     transform: translateY(-10px);
     border-color: var(--primary);
-    background: linear-gradient(135deg, rgba(26, 31, 58, 0.9), rgba(51, 56, 126, 0.4));
+    background: linear-gradient(135deg, rgba(15, 13, 18, 0.95), rgba(40, 36, 30, 0.4));
 }
 
 .feature-card:hover::before {
@@ -407,7 +409,7 @@ body {
     font-size: 48px;
     margin-bottom: 20px;
     color: var(--gold);
-    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.22);
 }
 
 .feature-card h3 {
@@ -527,6 +529,61 @@ body {
     border-color: var(--primary);
 }
 
+/* Reduced layout thrashing: use class-based reveal animations */
+.feature-card,
+.earn-card,
+.faq-item,
+.step {
+    opacity: 0;
+    transform: translateY(18px);
+    will-change: transform, opacity;
+    transition: transform 520ms cubic-bezier(0.2,0.9,0.2,1), opacity 520ms ease;
+}
+
+.in-view {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* Mobile menu open state */
+.nav-menu.open {
+    display: flex !important;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 64px);
+    flex-direction: column;
+    background: linear-gradient(180deg, rgba(0,0,0,0.88), rgba(15,13,18,0.96));
+    z-index: 999;
+    gap: 18px;
+    padding: 28px 20px;
+    overflow-y: auto;
+}
+
+.hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.nav-brand .early-badge {
+    background: rgba(255,215,0,0.08);
+    color: var(--gold);
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 12px;
+    margin-left: 12px;
+    border: 1px solid rgba(255,215,0,0.08);
+}
+
+.banner-early {
+    background: linear-gradient(90deg, rgba(255,215,0,0.06), rgba(255,215,0,0.03));
+    color: var(--gold);
+    text-align: center;
+    padding: 6px 12px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
 .earn-header {
     display: flex;
     justify-content: space-between;
@@ -540,13 +597,13 @@ body {
 }
 
 .earn-badge {
-    background: rgba(0, 212, 255, 0.1);
+    background: rgba(255, 215, 0, 0.06);
     color: var(--primary);
     padding: 6px 12px;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 600;
-    border: 1px solid rgba(0, 212, 255, 0.3);
+    border: 1px solid rgba(255,215,0,0.12);
 }
 
 .earn-card p {
@@ -597,7 +654,7 @@ body {
 /* CTA Section */
 .cta-section {
     padding: 100px 0;
-    background: linear-gradient(135deg, rgba(131, 56, 236, 0.1), rgba(0, 212, 255, 0.05));
+    background: linear-gradient(135deg, rgba(255,215,0,0.04), rgba(255,215,0,0.02));
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
     text-align: center;
@@ -705,8 +762,8 @@ body {
     justify-content: center;
     width: 40px;
     height: 40px;
-    background: rgba(0, 212, 255, 0.1);
-    border: 1px solid rgba(0, 212, 255, 0.3);
+    background: rgba(255, 215, 0, 0.06);
+    border: 1px solid rgba(255, 215, 0, 0.12);
     border-radius: 50%;
     font-weight: 600;
     margin-bottom: 0;
@@ -715,8 +772,8 @@ body {
 }
 
 .social-links a:hover {
-    background: rgba(0, 212, 255, 0.2);
-    border-color: var(--primary);
+    background: rgba(255, 215, 0, 0.10);
+    border-color: var(--gold-dark);
     margin-left: 0;
     transform: translateY(-3px);
 }
