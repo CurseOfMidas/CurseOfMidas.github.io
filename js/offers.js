@@ -1,27 +1,88 @@
+// Demo offers data
+const demoOffers = [
+  {
+    id: 'survey-01',
+    title: 'Market Research Survey',
+    provider: 'MarketInsights',
+    payout: '$5',
+    image: 'https://via.placeholder.com/300x200?text=Survey',
+    categories: ['Survey', 'Quick'],
+    description: 'Share your opinions about consumer products',
+    requirements: '18+, valid email',
+    url: '#',
+    tags: ['survey', 'quick', 'opinions']
+  },
+  {
+    id: 'offer-02',
+    title: 'Mobile App Install',
+    provider: 'AppHub',
+    payout: '$2-$8',
+    image: 'https://via.placeholder.com/300x200?text=App',
+    categories: ['Offerwall', 'App'],
+    description: 'Install and try new mobile applications',
+    requirements: 'Android or iOS device',
+    url: '#',
+    tags: ['app', 'download', 'offerwall']
+  },
+  {
+    id: 'video-03',
+    title: 'Watch Ads & Videos',
+    provider: 'VideoRewards',
+    payout: '$0.50-$2',
+    image: 'https://via.placeholder.com/300x200?text=Video',
+    categories: ['Video', 'Passive'],
+    description: 'Earn money watching sponsored content',
+    requirements: 'None',
+    url: '#',
+    tags: ['video', 'passive', 'ads']
+  },
+  {
+    id: 'refer-04',
+    title: 'Referral Bonus',
+    provider: 'Curse of Midas',
+    payout: '10%',
+    image: 'https://via.placeholder.com/300x200?text=Referral',
+    categories: ['Referral', 'Passive'],
+    description: 'Earn commission from referred friends',
+    requirements: 'Active account',
+    url: '#',
+    tags: ['referral', 'passive', 'affiliate']
+  }
+];
+
 async function loadOffers() {
   try {
-    const res = await fetch('/offers.json');
-    if (!res.ok) throw new Error('Could not load offers.json');
-    const offers = await res.json();
-    return offers;
+    // Try to fetch from server first
+    const res = await fetch('/data/offers.json');
+    if (res.ok) return await res.json();
   } catch (err) {
-    console.error(err);
-    return [];
+    console.log('Using demo data:', err.message);
   }
+  // Fallback to demo data
+  return demoOffers;
 }
 
 function createCard(offer) {
   const card = document.createElement('article');
   card.className = 'offer-card';
   card.innerHTML = `
-    <a class="offer-link" href="offer.html?id=${encodeURIComponent(offer.id)}" aria-label="Open ${offer.title}">
-      <div class="offer-thumb"><img src="${offer.image}" alt="${offer.title}"></div>
-      <div class="offer-body">
-        <h3 class="offer-title">${offer.title}</h3>
-        <p class="offer-provider">${offer.provider} · <span class="offer-payout">${offer.payout}</span></p>
-        <p class="offer-cats">${offer.categories.join(' · ')}</p>
+    <div class="offer-category">${offer.categories[0]}</div>
+    <div class="offer-header">
+      <h3 class="offer-title">${offer.title}</h3>
+      <span class="offer-reward">${offer.payout}</span>
+    </div>
+    <p class="offer-description">${offer.description}</p>
+    <div class="offer-meta">
+      <div class="offer-meta-item">
+        <i class="fas fa-building"></i>
+        <span>${offer.provider}</span>
       </div>
-    </a>
+      <div class="offer-meta-item">
+        <i class="fas fa-clock"></i>
+        <span>${offer.categories.includes('Quick') ? '5-15 min' : 'Varies'}</span>
+      </div>
+    </div>
+    <a href="offer.html?id=${encodeURIComponent(offer.id)}" class="offer-btn">View Offer</a>
   `;
   return card;
 }
@@ -87,22 +148,45 @@ async function initOfferDetail() {
   const offer = offers.find(o => o.id === id);
   const container = document.getElementById('offerDetail');
   if (!offer) {
-    container.innerHTML = '<p class="muted">Offer not found.</p>';
+    container.innerHTML = '<p style="color: var(--text-secondary);">Offer not found.</p>';
     return;
   }
   container.innerHTML = `
-    <div class="detail-card">
-      <div class="detail-thumb"><img src="${offer.image}" alt="${offer.title}"></div>
-      <div class="detail-body">
-        <h1>${offer.title}</h1>
-        <p class="muted">Provider: ${offer.provider} · Categories: ${offer.categories.join(', ')}</p>
-        <p class="offer-desc">${offer.description}</p>
-        <p><strong>Requirements:</strong> ${offer.requirements}</p>
-        <p><strong>Payout:</strong> ${offer.payout}</p>
-        <a class="btn-primary" target="_blank" rel="noopener noreferrer" href="${offer.url}">Open Offer</a>
-        <p class="muted small">Note: This site is in Early Access. Offers are listed for demonstration; follow provider terms. We are not responsible for third-party content.</p>
+    <div class="offer-detail-header">
+      <div class="offer-detail-icon">
+        <i class="${offer.categories.includes('Survey') ? 'fas fa-clipboard' : offer.categories.includes('App') ? 'fas fa-mobile-alt' : offer.categories.includes('Video') ? 'fas fa-play-circle' : 'fas fa-gift'}"></i>
+      </div>
+      <div>
+        <h1 class="offer-detail-title">${offer.title}</h1>
+        <div class="offer-detail-reward">${offer.payout}</div>
       </div>
     </div>
+    <p class="offer-detail-description">${offer.description}</p>
+    <div class="offer-detail-specs">
+      <div class="spec-item">
+        <div class="spec-label">Provider</div>
+        <div class="spec-value">${offer.provider}</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Category</div>
+        <div class="spec-value">${offer.categories.join(', ')}</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Requirements</div>
+        <div class="spec-value">${offer.requirements}</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Time</div>
+        <div class="spec-value">${offer.categories.includes('Quick') ? '5-15 min' : 'Varies'}</div>
+      </div>
+    </div>
+    <div class="offer-detail-actions">
+      <a class="offer-detail-btn" target="_blank" rel="noopener noreferrer" href="${offer.url}">Open Offer</a>
+      <a href="offers.html" class="btn-secondary">Back to Offers</a>
+    </div>
+    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 24px;">
+      <strong>Note:</strong> This site is in Early Access. Offers are listed for demonstration purposes. Please follow provider terms and conditions. We are not responsible for third-party content.
+    </p>
   `;
 }
 

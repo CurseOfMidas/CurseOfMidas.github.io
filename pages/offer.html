@@ -1,112 +1,126 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Offer — Curse of Midas</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/offers.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete an offer on Curse of Midas and earn rewards.">
+    <title>Offer Details - Curse of Midas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/offers.css">
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="container">
-      <div class="nav-brand">
-        <span class="logo-icon"><i class="fas fa-crown"></i></span>
-        <span class="logo-text">Curse of Midas</span>
-        <span class="early-badge">Early Access</span>
-      </div>
-      <div class="nav-menu">
-        <a href="../index.html#features" class="nav-link">Features</a>
-        <a href="../index.html#how-it-works" class="nav-link">How It Works</a>
-        <a href="../index.html#earn" class="nav-link">Ways to Earn</a>
-        <a href="offers.html" class="nav-link">Offers</a>
-        <a href="../index.html#contact" class="nav-link">Contact</a>
-        <button class="btn-primary nav-btn">Get Started</button>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
-          <i class="fas fa-moon"></i>
-        </button>
-      </div>
-      <div class="hamburger" id="hamburgerMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
-      <div class="mobile-menu-content">
-        <a href="../index.html#features" class="nav-link">Features</a>
-        <a href="../index.html#how-it-works" class="nav-link">How It Works</a>
-        <a href="../index.html#earn" class="nav-link">Ways to Earn</a>
-        <a href="offers.html" class="nav-link">Offers</a>
-        <a href="../index.html#contact" class="nav-link">Contact</a>
-        <button class="btn-primary nav-btn">Get Started</button>
-        <button class="theme-toggle" id="themeToggleMobile" aria-label="Toggle dark/light mode">
-          <i class="fas fa-moon"></i>
-        </button>
-      </div>
-    </div>
-  </nav>
-  <div class="banner-early">Early Access — Under Construction: data and payouts are disabled</div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="logo-icon"><i class="fas fa-crown"></i></span>
+                <span class="logo-text">Curse of Midas</span>
+                <span class="early-badge">Early Access</span>
+            </div>
+            <div class="nav-menu">
+                <a href="../index.html#features" class="nav-link">Features</a>
+                <a href="../index.html#how-it-works" class="nav-link">How It Works</a>
+                <a href="../index.html#earn" class="nav-link">Ways to Earn</a>
+                <a href="offers.html" class="nav-link">Offers</a>
+                <a href="../index.html#contact" class="nav-link">Contact</a>
+                <button class="btn-primary nav-btn">Get Started</button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <div class="hamburger" id="hamburgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-content">
+                <a href="../index.html#features" class="nav-link">Features</a>
+                <a href="../index.html#how-it-works" class="nav-link">How It Works</a>
+                <a href="../index.html#earn" class="nav-link">Ways to Earn</a>
+                <a href="offers.html" class="nav-link">Offers</a>
+                <a href="../index.html#contact" class="nav-link">Contact</a>
+                <button class="btn-primary nav-btn">Get Started</button>
+                <button class="theme-toggle" id="themeToggleMobile" aria-label="Toggle dark/light mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-  <main class="container" style="padding:28px 20px;">
-    <a href="offers.html" class="btn-secondary">← Back to Offers</a>
-    <section id="offerDetail" style="margin-top:18px;"></section>
-  </main>
+    <div class="banner-early">Early Access — Under Construction: data and payouts are disabled</div>
 
-  <!-- Footer -->
-  <footer class="footer" id="contact">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h4>About Curse of Midas</h4>
-          <p>Empowering people worldwide to monetize their time and turn everyday activities into income.</p>
+    <!-- Main Content -->
+    <main class="offer-detail-section">
+        <div class="container">
+            <a href="offers.html" class="btn-secondary">← Back to Offers</a>
+            <section id="offerDetail" class="offer-detail-container"></section>
         </div>
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="../index.html#features">Features</a></li>
-            <li><a href="../index.html#how-it-works">How It Works</a></li>
-            <li><a href="../index.html#earn">Ways to Earn</a></li>
-            <li><a href="../index.html#faq">FAQ</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Contact Us</h4>
-          <ul>
-            <li><a href="mailto:support@curseofmidas.com">support@curseofmidas.com</a></li>
-            <li><a href="#">Support Center</a></li>
-            <li><a href="#">Report Issue</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Follow Us</h4>
-          <div class="social-links">
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Curse of Midas. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-      </div>
-    </div>
-  </footer>
+    </main>
 
-  <script src="../js/offers.js"></script>
-  <script>
-    // Mobile menu logic
-    const hamburger = document.getElementById('hamburgerMenu');
-    const mobileMenu = document.getElementById('mobileMenu');
-    hamburger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-    });
-    mobileMenu.addEventListener('click', (e) => {
-      if (e.target === mobileMenu) mobileMenu.classList.remove('open');
-    });
-  </script>
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Curse of Midas</h4>
+                    <p>Empowering people worldwide to monetize their time and turn everyday activities into income.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html#features">Features</a></li>
+                        <li><a href="../index.html#how-it-works">How It Works</a></li>
+                        <li><a href="../index.html#earn">Ways to Earn</a></li>
+                        <li><a href="../index.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><a href="mailto:support@curseofmidas.com">support@curseofmidas.com</a></li>
+                        <li><a href="#">Support Center</a></li>
+                        <li><a href="#">Report Issue</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Curse of Midas. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/offers.js"></script>
+    <script src="../script.js"></script>
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburgerMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+            });
+        }
+        
+        if (mobileMenu) {
+            mobileMenu.addEventListener('click', (e) => {
+                if (e.target === mobileMenu) {
+                    mobileMenu.classList.remove('open');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
