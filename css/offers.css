@@ -1,0 +1,60 @@
+/* Modern styles for offers page */
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: #f8f9fa;
+  margin: 0;
+  color: #222;
+}
+.offers-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 32px;
+}
+.offer-card {
+  background: #f3f6fa;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  margin-bottom: 24px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: box-shadow 0.2s;
+}
+.offer-card:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+}
+.offer-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2d3a4a;
+}
+.offer-desc {
+  font-size: 1rem;
+  color: #4a5a6a;
+}
+.offer-btn {
+  align-self: flex-start;
+  background: linear-gradient(90deg,#ffd700,#ffb700);
+  color: #222;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.offer-btn:hover {
+  background: linear-gradient(90deg,#ffb700,#ffd700);
+}
+@media (max-width: 600px) {
+  .offers-container {
+    padding: 12px;
+  }
+  .offer-card {
+    padding: 12px;
+  }
+}
