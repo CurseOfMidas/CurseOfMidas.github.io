@@ -39,6 +39,7 @@ body {
 .offer-btn {
   align-self: flex-start;
   background: linear-gradient(90deg,#ffd700,#ffb700);
+  /* Mobile menu redesign */
   color: #222;
   border: none;
   border-radius: 8px;
