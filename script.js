@@ -1,3 +1,56 @@
+// Theme Toggle Functionality
+const themeToggle = document.getElementById('themeToggle');
+const html = document.documentElement;
+
+// Detect system preference
+const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+// Load saved theme from localStorage or use system preference
+function loadTheme() {
+    const savedTheme = localStorage.getItem('theme') || (systemPreference ? 'dark' : 'light');
+    setTheme(savedTheme);
+}
+
+// Set theme
+function setTheme(theme) {
+    document.body.classList.remove('light-mode', 'dark-mode');
+    document.body.classList.add(theme === 'light' ? 'light-mode' : 'dark-mode');
+    
+    // Update theme toggle icon
+    if (themeToggle) {
+        if (theme === 'light') {
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            themeToggle.setAttribute('aria-label', 'Switch to dark mode');
+        } else {
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            themeToggle.setAttribute('aria-label', 'Switch to light mode');
+        }
+    }
+    
+    // Update html attribute for CSS
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+}
+
+// Theme toggle button click handler
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = localStorage.getItem('theme') || (systemPreference ? 'dark' : 'light');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        setTheme(newTheme);
+    });
+}
+
+// Listen for system theme changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+        setTheme(e.matches ? 'dark' : 'light');
+    }
+});
+
+// Load theme on page load
+loadTheme();
+
 // Mobile Menu Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
