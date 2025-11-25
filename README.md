@@ -1,0 +1,1 @@
+# CurseOfMidas.github.io
