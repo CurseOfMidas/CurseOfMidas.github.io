@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Offerwalls — Curse of Midas</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand"><span class="logo-icon"><i class="fas fa-crown"></i></span><span class="logo-text">Curse of Midas</span></div>
+    </div>
+  </nav>
+
+  <main class="container" style="padding:28px 20px;">
+    <h1 class="section-title">Offerwalls</h1>
+    <p class="muted">Browse available offerwalls. Use search and categories to filter results. Note: platform is in Early Access; offers are for demonstration.</p>
+
+    <div class="offer-controls" style="display:flex;gap:12px;align-items:center;margin:18px 0;">
+      <input id="offerSearch" placeholder="Search offers or tags..." class="search-input" />
+      <select id="offerCategory" class="select-input"></select>
+      <a href="index.html" class="btn-secondary">Back Home</a>
+    </div>
+
+    <section id="offersGrid" class="offers-grid"></section>
+  </main>
+
+  <footer class="footer" style="margin-top:60px;padding-top:20px;">
+    <div class="container">
+      <p class="muted small">Curse of Midas — Early Access</p>
+    </div>
+  </footer>
+
+  <script src="offers.js"></script>
+</body>
+</html>
